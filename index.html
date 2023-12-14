@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Simulador Memoria Cache</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body  onload="criarTabela()">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Memoria Ram</h5>
+                <div id="tableContainer" style="height: 300px; overflow-y: auto;">
+                <table class="table" id="tabela_RAM">
+                    <thead>
+                        <tr>
+                            <th>
+                                Endereço
+                            </th>
+                            <th>
+                                Celula
+                            </th>
+                    </thead>
+                    <tbody>
+                        <!-- Linhas vazias para serem preenchidas dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <br>
+            <br>
+            <label for="">endereco</label>
+            <input type="numer" class="form-control" id="exampleInputPassword1">
+            <br>
+            <br>
+            <label for="">valor</label>
+            <input type="text" class="form-control" id="valorInput" >
+            <br>
+            <br>
+            
+            <br>
+            <br>
+            <button class="btn btn-success"  onclick="mudarMemoria()" >
+                mudar memoria
+            </button>
+            <br>
+            <br>
+            
+            <button class="btn btn-primary" id="lerMemoriaBtn" onclick="lerMemoria()">
+                Ler Memoria
+            </button>
+            <br>
+            <br>
+            <button class="btn btn-danger"  id="estatisticasBtn" onclick="estatisticas()">
+                Estatisticas
+            </button>
+            <br>
+            <br>
+            <div id="estatisticas" style="display: none;" >
+                <p>Número de Acessos: <span id="numAcessos">0</span></p>
+                <p>Número de Acertos: <span id="numAcertos">0</span></p>
+                <p>Número de Faltas: <span id="numFaltas">0</span></p>
+                <p>Número de Leituras: <span id="numLeituras">0</span></p>
+                <p>Número de Escritas: <span id="numEscritas">0</span></p>
+            </div>
+            </div>
+            <div class="col-md-8">
+                <h5>Memoria Cache</h5>
+                <table class="table" id="tabela cache">
+                    <thead>
+                        <tr>
+                            <th>
+								Rótulo
+                            </th>
+                            <th>
+                                c0
+                            </th>
+                            <th>
+                                c1
+                            </th>
+                            <th>
+                                c2
+                            </th>
+                            <th>
+                                c3
+                            </th>
+                           
+                            
+                        </tr>
+						<tr>
+                            <th>
+                                .
+                                <br>
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                              
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                            .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                               .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                               
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                                .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                              
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                        </tr>
+						<tr>
+                            <th>
+                                .
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                              
+                            </th>
+                            <th>
+                                
+                            </th>
+                            <th>
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                <form role="form">
+                    <div class="form-group">
+                         
+                        
+                    </div>
+                    <div class="form-group">
+                        
+                        
+                        
+                    </div>
+                    <div class="form-group">
+                        
+                        
+                    </div>
+                    
+                </form> 
+               
+                
+            </div>
+            
+        </div>
+       
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <script>
+        var tabelaRAM
+
+        
+    //funcao criar tabela
+    function criarTabela() {
+    let tabela_RAM = document.getElementById('tabela_RAM');
+    let b0LabelCounter = 0;
+
+    for (let i = 0; i <= 2048; i++) {
+        let novaLinha = document.createElement("tr");
+
+        for (let j = 0; j < 2; j++) {
+            let nova_celula = document.createElement("td");
+            novaLinha.appendChild(nova_celula);
+
+            let valor = i * 1 - 1 + j; 
+            let aux;
+
+            if (j === 0) {
+                aux = document.createTextNode((i * 1).toString(2));
+            } else {
+                aux = document.createTextNode(valor);
+            }
+
+            nova_celula.appendChild(aux);
+        }
+
+        tabela_RAM.appendChild(novaLinha);
+
+        
+        if ((i + 1) % 4 === 0) {
+            let linhaVazia = document.createElement("tr");
+
+            for (let k = 0; k < 2; k++) {
+                let celulaVazia = document.createElement("td");
+                linhaVazia.appendChild(celulaVazia);
+            }
+
+            
+            let labelCelula = document.createElement("td");
+            labelCelula.appendChild(document.createTextNode('Bloco' + b0LabelCounter));
+            linhaVazia.appendChild(labelCelula);
+
+            b0LabelCounter++; 
+            tabela_RAM.appendChild(linhaVazia);
+        }
+    }
+}
+
+
+
+        let valores = document.querySelectorAll('.celulas');
+
+        for (let i = 0; i < valores.length; i++) {
+            valores[i].innerHTML = `${i}`;
+        }
+    
+    
+    
+    //funcao botao memoria
+    function lerMemoria() {
+ 
+    document.getElementById('numLeituras').innerText = parseInt(document.getElementById('numLeituras').innerText) + 1;
+
+   
+    let valorInputDecimal = parseInt(document.getElementById('exampleInputPassword1').value, 2);
+
+   
+    let tabelaCache = document.getElementById('tabela cache');
+    let tabelaRAM = document.getElementById('tabela_RAM');
+
+   
+    if (!tabelaCache || !tabelaRAM) {
+        console.error('Erro: Tabela de cache ou tabela de RAM não encontrada.');
+        return;
+    }
+
+    let blocoRAM = Math.floor(valorInputDecimal / 4);
+    let blocoCachePresente = false;
+
+   
+    for (let i = 1; i < tabelaCache.rows.length; i++) {
+        let celulaCache = tabelaCache.rows[i].cells[0];
+        let valorCacheDecimal = parseInt(celulaCache.innerText.split(' ')[1]);
+
+        if (valorInputDecimal === valorCacheDecimal) {
+            blocoCachePresente = true;
+            
+            document.getElementById('numAcertos').innerText = parseInt(document.getElementById('numAcertos').innerText) + 1;
+            break;
+        }
+    }
+
+
+    document.getElementById('numAcessos').innerText = parseInt(document.getElementById('numAcertos').innerText) +
+                                                      parseInt(document.getElementById('numFaltas').innerText);
+
+    if (!blocoCachePresente) {
+        
+        document.getElementById('numFaltas').innerText = parseInt(document.getElementById('numFaltas').innerText) + 1;
+
+        let posicaoCache = blocoRAM % 16;
+        let linhaCache = tabelaCache.rows[posicaoCache + 1];
+
+        for (let i = 1; i <= 4; i++) {
+            let celulaCache = linhaCache.cells[i];
+
+            if ((blocoRAM * 4 + i - 1) < tabelaRAM.rows.length) {
+                let valorBlocoRAM = (blocoRAM * 4 + i - 1).toString();
+                celulaCache.innerText = valorBlocoRAM;
+            }
+        }
+
+        let rotuloCache = linhaCache.cells[0];
+        rotuloCache.innerText =  + blocoRAM.toString(2).padStart(11, '0');
+
+        document.getElementById('numEscritas').innerText = parseInt(document.getElementById('numEscritas').innerText) + 1;
+    }
+}
+
+
+//funcao estatisticas
+function estatisticas(){
+    document.getElementById('estatisticasBtn').addEventListener('click', function() {
+        var estatisticasDiv = document.getElementById('estatisticas');
+
+
+if (estatisticasDiv.style.display === 'none') {
+    estatisticasDiv.style.display = 'block';
+} else {
+    estatisticasDiv.style.display = 'none';
+}
+});
+}
+
+
+//funcao escrever memoria
+function escreverMemoria() {
+    let inputElement = document.getElementById('exampleInputPassword1');
+    let valorInput = inputElement.value.trim();
+
+    
+    if (!/^[01]+$/.test(valorInput)) {
+        console.error('Erro: O valor de entrada deve ser binário.');
+        return;
+    }
+
+    let blocoRAM = Math.floor(parseInt(valorInput, 2) / 4);
+    let posicaoCache = blocoRAM % 16;
+
+    let tabelaRAM = document.getElementById('tabela_RAM');
+    let tabelaCache = document.getElementById('tabela cache');
+
+    if (!tabelaRAM || !tabelaCache) {
+        console.error('Erro: Tabela de RAM ou tabela de cache não encontrada.');
+        return;
+    }
+
+    
+    let linhaCache = tabelaCache.rows[posicaoCache + 1];
+
+    for (let i = 1; i <= 4; i++) {
+        let celulaCache = linhaCache.cells[i];
+
+        if ((blocoRAM * 4 + i - 1) < tabelaRAM.rows.length) {
+            let valorBlocoRAM = (blocoRAM * 4 + i - 1).toString();
+            celulaCache.innerText = valorBlocoRAM;
+        }
+    }
+
+    let rotuloCache = linhaCache.cells[0];
+    rotuloCache.innerText = + blocoRAM.toString(2).padStart(11, '0');
+
+    document.getElementById('numEscritas').innerText = parseInt(document.getElementById('numEscritas').innerText) + 1;
+}
+
+
+//faz a alteração do local escrito
+function mudarMemoria() {
+    
+    let enderecoInput = document.getElementById('exampleInputPassword1').value.trim();
+
+   
+    if (!/^[01]+$/.test(enderecoInput)) {
+        console.error('Erro: O endereço deve ser binário.');
+        return;
+    }
+
+    
+    let enderecoDecimal = parseInt(enderecoInput, 2);
+    let valorInput = document.getElementById('valorInput').value.trim();
+    let tabelaCache = document.getElementById('tabela cache');  
+
+    let posicaoCache = Math.floor(enderecoDecimal / 4) % 16;
+    let linhaCache = tabelaCache.rows[posicaoCache + 1];
+
+    if (posicaoCache >= 0 && posicaoCache < tabelaCache.rows.length - 1) {
+        
+        let colunaCache = enderecoDecimal % 4 + 1;
+        let celulaCache = linhaCache.cells[colunaCache];
+        celulaCache.innerText = valorInput;
+
+        console.log(`Valor inserido na memória cache: ${valorInput} no endereço ${enderecoDecimal}`);
+
+      
+        document.getElementById('numEscritas').innerText = parseInt(document.getElementById('numEscritas').innerText) + 1;
+    } else {
+        console.error('Erro: Endereço fora do intervalo da tabela de cache.');
+    }
+}
+
+
+
+
+function buscarValorNaRAM(endereco) {
+    let tabelaRAM = document.getElementById('tabela_RAM');
+    for (let i = 1; i < tabelaRAM.rows.length; i++) {
+        let celulaEndereco = tabelaRAM.rows[i].cells[0];
+        let enderecoRAM = parseInt(celulaEndereco.innerText, 2);
+        if (enderecoRAM === endereco) {
+            let celulaValor = tabelaRAM.rows[i].cells[1];
+            return celulaValor.innerText;
+        }
+    }
+    return null;
+}
+
+
+
+
+
+        
+    </script>
+  </body>
+</html>
